@@ -30,7 +30,7 @@ common_opts = [
         },
         {
             "name": 'genesis_file',
-            "default": "",
+            "default": "./genesis.json",
             "help": 'a json file to create genesis block',
             "type": str,
         },

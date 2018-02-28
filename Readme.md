@@ -35,7 +35,7 @@
 1: transaction
 
 curl -X POST
-     http://localhost:8080/transaction
+     http://localhost:8080/transfer
      -d '{
             "from": utxo,
             "to": u"5TFCyzyXAVw7fkEynnNvcN6HYFakwkX7wq",
@@ -66,6 +66,10 @@ curl -X POST
 
   2: get a public key and addr by private key
 
-    curl http://localhost:8080/$private_key_hex
+    curl http://localhost:8080/account/$private_key_hex
+
+  3: get signout by private key
+
+    curl http://localhost:8080/account/$private_key_hex?sign_content=$utxo
 
 <pre>

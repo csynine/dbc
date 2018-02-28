@@ -32,23 +32,24 @@ def utxo_transfer(trans):
     try:
         utxo = get_utxo_by_id(trans)
         _addr = account.get_addr(trans['publickey'])
-        if utxo['to'] != _addr:
-            LOG.debug("address is pair or not, %s != %s" % (utxo['to'], _addr))
-            return (False, {}, {})
-        account.verify(trans['singout'], trans['publickey'], trans['from'])
+        #if utxo['to'] != _addr:
+            #LOG.debug("address is pair or not, %s != %s" % (utxo['to'], _addr))
+            #return (False, {}, {})
+        LOG.debug("address is pair %s -> %s" % (utxo['to'], _addr))
+        account.verify(trans['signout'], trans['publickey'], trans['from'])
     except:
         LOG.debug("signout is pair or not")
         return (False, {}, {})
     result, new_assets = transfer(trans, utxo)
     if result and new_assets:
         LOG.debug("new assets after trans is %s" % new_assets)
-        utxo['to'] =trans.get('returto') or utxo['to']
+        utxo['to'] =trans.get('returnto') or utxo['to']
         utxo['assets'] = new_assets
         fee = float(trans['fee'])/2
         trans[u'fee'] = utxo[u'fee'] = fee
     else:
         utxo = {}
-    os.remove(options.trans_path_format % (options.chain_dir, trans['from']))
+    #os.remove(options.trans_path_format % (options.chain_dir, trans['from']))
     return (True, trans, utxo)
 
 def transfer(trans, utxo):

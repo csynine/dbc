@@ -3,6 +3,7 @@ import tornado.web
 from decimal import Decimal
 
 from dbc import transfer
+from dbc.log import LOG
 
 class Transfer(tornado.web.RequestHandler):
     def initialize(self, state):

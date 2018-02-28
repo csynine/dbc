@@ -16,6 +16,6 @@ setup(
             ],
         packages=find_packages(),
         data_files = [
-            ('/etc/dbc', ['etc/dbc.conf',])
+            ('etc/dbc', ['etc/dbc.conf',])
             ]
         )

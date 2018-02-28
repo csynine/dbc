@@ -62,7 +62,7 @@ def main():
     ])
     server = tornado.httpserver.HTTPServer(app)
     server.bind(options.api_port)
-    server.start(1)
+    server.start(3)
     IOLoop.current().start()
 
 
